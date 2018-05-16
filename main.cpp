@@ -17,12 +17,16 @@ int main() {
     opcion=menu();
 
     if (opcion==1) {
+      //Autofill
       /*for (int i = 0; i < 10; i++) {
-      Persona* temp = new Persona("Leonardo"+to_string(i),"Borjas","0801199804812","Colonia America","50495105400",'M','B');
-      temp->fill();
-      buffer.push_back(temp);
-    }*/
+        Persona* temp = new Persona("Leonardo"+to_string(i),"Borjas","0801199804812","Colonia America","50495105400",'M','B');
+        temp->fill();
+        buffer.push_back(temp);
+      }*/
+      //Agregar Persona
       buffer.push_back(agregar());
+
+      //Escribir al archivo
       if (buffer.size()==10) {
         ofstream file(archivo, ios::out | ios::app);
         if (file.is_open()) {
@@ -37,26 +41,28 @@ int main() {
 
     if (opcion==2) {
       int position;
-      string line;
       list(archivo);
       cout<<"Cual registro desea eliminar: ";
       cin>>position;
-      position*=114;
+      position*=115;
+
+      //Marca el archivo eliminado
       fstream file;
       file.open(archivo, ios::in | ios::out);
       if (file) {
         file.seekp(0,ios::beg);
         file.seekp(position,ios::cur);
         file.write("*",1);
-
-
         file.close();
       }
     }
+
     if (opcion==3) {
       list(archivo);
     }
+
     if (opcion==4) {
+      //Guarda lo que esta en el buffer y sale del programa
       if (buffer.size()>0) {
         ofstream file(archivo, ios::out | ios::app);
         if (file.is_open()) {

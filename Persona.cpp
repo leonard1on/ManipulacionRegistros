@@ -26,7 +26,7 @@ void Persona::fill(){
 }
 
 string Persona::toString(){
-  return this->nombre+"|"+this->apellido+"|"+this->identidad+"|"+this->direccion+"|"+this->telefono+"|"+this->sexo+"|"+this->raza+"|\n";
+  return " "+this->nombre+"|"+this->apellido+"|"+this->identidad+"|"+this->direccion+"|"+this->telefono+"|"+this->sexo+"|"+this->raza+"|\n";
 }
 
 string Persona::getNombre(){
