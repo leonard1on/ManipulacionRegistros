@@ -17,12 +17,12 @@ int main() {
     opcion=menu();
 
     if (opcion==1) {
-      for (int i = 0; i < 10; i++) {
+      /*for (int i = 0; i < 10; i++) {
       Persona* temp = new Persona("Leonardo"+to_string(i),"Borjas","0801199804812","Colonia America","50495105400",'M','B');
       temp->fill();
       buffer.push_back(temp);
-    }
-      //buffer.push_back(agregar());
+    }*/
+      buffer.push_back(agregar());
       if (buffer.size()==10) {
         ofstream file(archivo, ios::out | ios::app);
         if (file.is_open()) {
@@ -56,12 +56,24 @@ int main() {
     if (opcion==3) {
       list(archivo);
     }
+    if (opcion==4) {
+      if (buffer.size()>0) {
+        ofstream file(archivo, ios::out | ios::app);
+        if (file.is_open()) {
+          for (size_t i = 0; i < buffer.size(); i++) {
+            file<<buffer.at(i)->toString();
+          }
+          file.close();
+        }
+        buffer.clear();
+      }
+    }
   }
   return 0;
 }
 
 int menu(){
-  cout<<"1)Agregar \n2)Eliminar \n3)Listar\n";
+  cout<<"1)Agregar \n2)Eliminar \n3)Listar\n4)Guardar y Salir\n";
   int opcion;
   cin>>opcion;
   return opcion;
